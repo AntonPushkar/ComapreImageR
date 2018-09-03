@@ -2,21 +2,23 @@ package Model;
 
 import View.FileChooser;
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LoadImages
 {
 
-   void getFiles()
+  public void getFiles()
    {
       boolean AllowedFile;
-      String pathes[] = new String[new FileChooser().getPathes().size()];
+      String pathes[] = FileChooser.getPathes().toArray(new String[FileChooser.getPathes().size()]);
+     System.out.println(pathes.length);
       File[] files = null;
       ArrayList<File> allListFiles = new ArrayList<>();
-      for(String x : pathes)
+      for(String x : pathes) {
+        System.out.println("In ForEach " + x);
         files = new File(x).listFiles();
+      }
 
       allListFiles.addAll(Arrays.asList(files));
 
@@ -24,11 +26,15 @@ public class LoadImages
       {
         AllowedFile = isFileAllowed(allListFiles.get(i));
 
-        if(!AllowedFile)
+        if(!AllowedFile) {
+          System.out.println(allListFiles.get(i) + " remove");
           allListFiles.remove(i);
+        }
 
         i--; //when we use remove in ArrayList index get possition i-1;
       }
+
+     System.out.println("Size listFiles " + allListFiles.size());
    }
 
 
@@ -50,7 +56,8 @@ public class LoadImages
        if(AllowedExtension.equals(aFileType) || AllowedExtension.equalsIgnoreCase(aFileType))
          isFileAllowed = true;
      }
-
      return isFileAllowed;
    }
+
+
 }

@@ -1,5 +1,6 @@
 package View;
 
+import Model.LoadImages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -46,6 +47,9 @@ public class Controller
       Alerts.NoChooseFolderToSave();
     if(!SelectFolderImages)
       Alerts.NoChooseFolderImage();*/
+
+    LoadImages loadImages = new LoadImages();
+    loadImages.getFiles();
 
   }
 

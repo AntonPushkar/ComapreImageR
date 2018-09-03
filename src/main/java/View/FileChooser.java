@@ -22,7 +22,7 @@ public class FileChooser
     pathes.add(String.valueOf(chooser.showDialog(stage)));
   }
 
-  public ArrayList<String> getPathes()
+  public static ArrayList<String> getPathes()
   {
     return pathes;
   }
