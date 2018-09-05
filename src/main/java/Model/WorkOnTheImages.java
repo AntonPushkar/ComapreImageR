@@ -59,7 +59,7 @@ public class WorkOnTheImages
 
 
 
-  private synchronized void HashOfImage(Graphics2D image)
+  private synchronized void HashOfImage(String ImagePath)
   {
 
     long average;
