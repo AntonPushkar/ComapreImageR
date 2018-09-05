@@ -4,6 +4,7 @@ import View.FileChooser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import util.FilesFormat;
 
 public class LoadImages
 {
@@ -47,9 +48,9 @@ public class LoadImages
 
       String[] FileType = {".jpg", ".png", ".jpeg", ".raw"};
 
-     int IndexExtension = file.toString().lastIndexOf('.');
 
-     String AllowedExtension = file.toString().substring(IndexExtension);
+
+     String AllowedExtension = FilesFormat.getFormatOfFile(file.getName());
 
      for(String aFileType : FileType)
      {
