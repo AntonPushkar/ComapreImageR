@@ -28,7 +28,7 @@ public class Controller
   @FXML
   public void ButtonPathes(ActionEvent event)
   {
-    FileChooser.ChooseDiroFImage();
+    DirChooser.ChooseDirOfImage();
   }
 
   @FXML
@@ -36,7 +36,7 @@ public class Controller
   {
     /*if(SelectFolderImages && SelectFolderToSave) {
       new DBImages().DeleteTableEntry();
-      CompareImage.Controller.FileChooser.FileStart();
+      CompareImage.Controller.DirChooser.FileStart();
       FilesImages.DeleteFilesFromTmp();
       setProgressIndicatorCompare(true);
       setDisableCompareButton(true);*//*

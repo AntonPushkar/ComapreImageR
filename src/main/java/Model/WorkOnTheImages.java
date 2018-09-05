@@ -24,8 +24,7 @@ public class WorkOnTheImages
   private synchronized void WorkImage(File FileImage)
   {
       try {
-        File inputImage = FileImage;
-        BufferedImage BuffImage = ImageIO.read(inputImage);
+        BufferedImage BuffImage = ImageIO.read(FileImage);
 
         BufferedImage outImage = new BufferedImage(ScaledWidth, ScaledHeight, BufferedImage.TYPE_BYTE_GRAY);
         Graphics2D g2d = outImage.createGraphics();

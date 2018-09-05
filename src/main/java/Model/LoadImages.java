@@ -1,6 +1,6 @@
 package Model;
 
-import View.FileChooser;
+import View.DirChooser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +12,8 @@ public class LoadImages
   public void getFiles()
    {
       boolean AllowedFile;
-      String pathes[] = FileChooser.getPathes().toArray(new String[FileChooser.getPathes().size()]);
-     System.out.println(pathes.length);
+      String pathes[] = DirChooser.getPathes().toArray(new String[DirChooser.getPathes().size()]);
+      System.out.println(pathes.length);
       File[] files = null;
       ArrayList<File> allListFiles = new ArrayList<>();
       for(String x : pathes) {
