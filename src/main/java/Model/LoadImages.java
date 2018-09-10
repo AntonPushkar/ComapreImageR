@@ -8,14 +8,14 @@ import util.FilesFormat;
 
 public class LoadImages
 {
-
+  static private ArrayList<File> allListFiles = new ArrayList<>();
   public void getFiles()
    {
       boolean AllowedFile;
       String pathes[] = DirChooser.getPathes().toArray(new String[DirChooser.getPathes().size()]);
       System.out.println(pathes.length);
       File[] files = null;
-      ArrayList<File> allListFiles = new ArrayList<>();
+
       for(String x : pathes) {
         System.out.println("In ForEach " + x);
         files = new File(x).listFiles();
@@ -60,5 +60,7 @@ public class LoadImages
      return isFileAllowed;
    }
 
-
+  public static ArrayList<File> getAllListFiles() {
+    return allListFiles;
+  }
 }

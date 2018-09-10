@@ -38,5 +38,10 @@ public class DirChooser
     pathToSave = String.valueOf(chooser.showDialog(stage));
   }
 
+  public static String getPathToSave()
+  {
+    return pathToSave;
+  }
+
 
 }
