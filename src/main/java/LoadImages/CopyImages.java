@@ -1,7 +1,7 @@
-package Model;
+package LoadImages;
 
+import Entities.Image;
 import View.DirChooser;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,18 +16,18 @@ public class CopyImages
     String FolderForCopy = DirChooser.getPathToSave();
     if(FolderForCopy == null)
       throw new NullPointerException("Folder for copy is null!");
-    ArrayList<File> listOfImages = LoadImages.getAllListFiles();
+    ArrayList<Image> listOfImages = LoadImages.getlistOfImages();
     if(listOfImages == null || listOfImages.isEmpty())
-      throw new NullPointerException("Folder for copy is null or empty!");
+      throw new NullPointerException("List Of Images for copy is null or empty!");
 
 
     Path ToCopy;
     Path originalPath;
 
-    for(File x: listOfImages)
+    for(Image x: listOfImages)
     {
       ToCopy = Paths.get(FolderForCopy + "\\"+x.getName());
-      originalPath = Paths.get(x.getAbsolutePath());
+      originalPath = Paths.get(x.getPath());
 
       if(!Files.exists(Paths.get(FolderForCopy))) {
         try {

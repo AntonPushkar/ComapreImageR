@@ -1,5 +1,6 @@
-package Model;
+package LoadImages;
 
+import Entities.Image;
 import View.DirChooser;
 import java.io.File;
 import java.util.ArrayList;
@@ -8,9 +9,11 @@ import util.FilesFormat;
 
 public class LoadImages
 {
-  static private ArrayList<File> allListFiles = new ArrayList<>();
+  static private ArrayList<Image> listOfImages = new ArrayList<>();
+
   public void getFiles()
    {
+      ArrayList<File> allListFiles = new ArrayList<>();
       boolean AllowedFile;
       String pathes[] = DirChooser.getPathes().toArray(new String[DirChooser.getPathes().size()]);
       System.out.println(pathes.length);
@@ -25,42 +28,24 @@ public class LoadImages
 
       for(int i=0; i<allListFiles.size(); i++)
       {
-        AllowedFile = isFileAllowed(allListFiles.get(i));
+        AllowedFile = FilesFormat.isFileAllowed(allListFiles.get(i));
 
         if(!AllowedFile) {
           System.out.println(allListFiles.get(i) + " remove");
           allListFiles.remove(i);
         }
-
         i--; //when we use remove in ArrayList index get possition i-1;
       }
+
+      // Create image objects
+      for(File x : allListFiles)
+        listOfImages.add(new Image(x.getName(), x.getPath()));
 
      System.out.println("Size listFiles " + allListFiles.size());
    }
 
 
-   private boolean isFileAllowed(File file)
-   {
-      boolean isFileAllowed = false;
-
-      if(file.isDirectory())
-        return false;
-
-      String[] FileType = {".jpg", ".png", ".jpeg", ".raw"};
-
-
-
-     String AllowedExtension = FilesFormat.getFormatOfFile(file.getName());
-
-     for(String aFileType : FileType)
-     {
-       if(AllowedExtension.equals(aFileType) || AllowedExtension.equalsIgnoreCase(aFileType))
-         isFileAllowed = true;
-     }
-     return isFileAllowed;
-   }
-
-  public static ArrayList<File> getAllListFiles() {
-    return allListFiles;
+  public static ArrayList<Image> getlistOfImages() {
+    return listOfImages;
   }
 }
