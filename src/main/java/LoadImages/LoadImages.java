@@ -9,7 +9,7 @@ import util.FilesFormat;
 
 public class LoadImages
 {
-  static private ArrayList<Image> listOfImages = new ArrayList<>();
+  static private final ArrayList<Image> listOfImages = new ArrayList<>();
 
   public void getFiles()
    {

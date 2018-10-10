@@ -14,8 +14,8 @@ import util.FilesFormat;
 
 public class WorkOnTheImages
 {
-  private static int ScaledWidth = 8;
-  private static int ScaledHeight = 8;
+  private static final int ScaledWidth = 8;
+  private static final int ScaledHeight = 8;
 
 
   public WorkOnTheImages()

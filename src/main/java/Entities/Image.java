@@ -4,11 +4,11 @@ import Model.WorkOnTheImages;
 
 public class Image
 {
-  private String name;
-  private String path;
+  private final String name;
+  private final String path;
   private String pathOfEditedImage;
   private String bitcode;
-  private boolean unique;
+  private boolean unique = false;
   private int Resolution;
 
 
@@ -36,11 +36,6 @@ public class Image
   }
 
   public String getBitcode() {
-    //"0" because in the WorkOnTheImage class method may return such bit code as "0"
-    if(bitcode == null || bitcode.equals("0") )
-    {
-      bitcode = new WorkOnTheImages().HashOfImage(this.pathOfEditedImage);
-    }
     return bitcode;
   }
 

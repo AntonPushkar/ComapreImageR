@@ -9,9 +9,7 @@ public class FilesFormat
   {
     int IndexExtension = fileName.lastIndexOf('.');
 
-    String AllowedExtension = fileName.substring(IndexExtension);
-
-    return AllowedExtension;
+    return fileName.substring(IndexExtension);
   }
 
   public static boolean isFileAllowed(File file)

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class MainWindow extends Application
 {
 
-  public void start(Stage Stage) throws Exception {
+  public void start(Stage Stage){
     try {
       Parent root = FXMLLoader.load(getClass().getResource("/MainView.fxml"));
       Stage.setScene(new Scene(root, 394, 150));

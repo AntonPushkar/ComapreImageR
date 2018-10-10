@@ -34,19 +34,7 @@ public class Controller
   @FXML
   public void CompareButton(ActionEvent event)
   {
-    /*if(SelectFolderImages && SelectFolderToSave) {
-      new DBImages().DeleteTableEntry();
-      CompareImage.Controller.DirChooser.FileStart();
-      FilesImages.DeleteFilesFromTmp();
-      setProgressIndicatorCompare(true);
-      setDisableCompareButton(true);*//*
 
-    }
-
-    if(!SelectFolderToSave)
-      Alerts.NoChooseFolderToSave();
-    if(!SelectFolderImages)
-      Alerts.NoChooseFolderImage();*/
 
     LoadImages loadImages = new LoadImages();
     loadImages.getFiles();
@@ -69,26 +57,4 @@ public class Controller
     SelectFolderImages = selectFolderImages;
   }
 
-
-
-  public void CountNoneUniqueImages(int Count)
-  {
-    System.out.println("Count " + Count);
-    if (CountNotUbiqueImage == null) {
-      System.out.println("count label null");
-    }
-    //CountNotUbiqueImage.setText(CountNotUbiqueImage.getText() + Count);
-  }
-
-  public void setProgressIndicatorCompare(boolean Visible)
-  {
-    ProgressIndicatorCompare.setVisible(Visible);
-  }
-
-  public void setDisableCompareButton(boolean Disable)
-  {
-    compare.setDisable(Disable);
-  }
-
-  int countpress = 0;
 }

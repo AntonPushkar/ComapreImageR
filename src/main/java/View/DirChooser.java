@@ -10,7 +10,7 @@ public class DirChooser
   private static ArrayList<String> pathes = new ArrayList<>();
   private static int numOfDirectories = 1;
   private static Stage stage = new Stage();
-  private static DirectoryChooser chooser = new DirectoryChooser();
+  private final static DirectoryChooser chooser = new DirectoryChooser();
   private static String pathToSave;
 
   public static void ChooseDirOfImage()
