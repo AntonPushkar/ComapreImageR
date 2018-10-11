@@ -1,6 +1,7 @@
 package View;
 
 import LoadImages.LoadImages;
+import Main.BaseClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,11 +35,7 @@ public class Controller
   @FXML
   public void CompareButton(ActionEvent event)
   {
-
-
-    LoadImages loadImages = new LoadImages();
-    loadImages.getFiles();
-
+    new Thread( () -> new BaseClass().CompareImage()).start();
   }
 
   @FXML

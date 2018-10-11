@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 import util.FilesFormat;
 
@@ -21,7 +21,6 @@ public class WorkOnTheImages
   public WorkOnTheImages()
   {
   }
-
 
   public synchronized void WorkImage(Image image)
   {
@@ -47,7 +46,6 @@ public class WorkOnTheImages
         String newPathForImage = "tmpImages\\"+outName;
 
         image.setPathOfEditedImage(newPathForImage);
-
         ImageIO.write(outImage, formatNameWithOutPoint, new File(newPathForImage));
         // clear the resource of memory
         g2d.setBackground(new Color(0,0,0,0));
@@ -57,55 +55,6 @@ public class WorkOnTheImages
       {
         e.printStackTrace();
       }
-  }
-
-
-  public synchronized String HashOfImage(String ImagePath) {
-
-    File input = new File(ImagePath);
-    String BitCode = "0";
-    try {
-      BufferedImage image = ImageIO.read(input);
-      Graphics2D g2d = image.createGraphics();
-      Long average;
-      Long sumPixel = 0L;
-
-      int resolution = ScaledHeight * ScaledWidth;
-
-      ArrayList<Integer> ListHash = new ArrayList<>();
-      for (int i = 0; i < image.getWidth(); i++)
-        for (int j = 0; j < image.getHeight(); j++)
-          sumPixel += image.getRGB(i, j);
-
-      average = sumPixel / resolution;
-
-      for (int i = 0; i < image.getWidth(); i++) {
-
-        for (int j = 0; j < image.getHeight(); j++) {
-          if (image.getRGB(i, j) < average)
-            ListHash.add(0);
-          else if (image.getRGB(i, j) >= average)
-            ListHash.add(1);
-        }
-
-      }
-
-      StringBuilder hash = new StringBuilder();
-
-      for (int x : ListHash)
-        hash.append(x);
-      ListHash.clear();
-      BitCode = String.valueOf(hash);
-
-      g2d.setBackground(new Color(0, 0, 0, 0));
-      g2d.clearRect(0, 0, image.getWidth(), image.getHeight());
-
-      return BitCode;
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-    return BitCode;
   }
 
   public static int getScaledHeight() {

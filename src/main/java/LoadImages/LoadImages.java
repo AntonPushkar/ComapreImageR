@@ -1,7 +1,6 @@
 package LoadImages;
 
 import Entities.Image;
-import View.DirChooser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,16 +10,15 @@ public class LoadImages
 {
   static private final ArrayList<Image> listOfImages = new ArrayList<>();
 
-  public void getFiles()
+  public ArrayList<Image> LoadFiles(ArrayList<String> pathes)
    {
+     System.out.println(LoadImages.class.getName());
       ArrayList<File> allListFiles = new ArrayList<>();
       boolean AllowedFile;
-      String pathes[] = DirChooser.getPathes().toArray(new String[DirChooser.getPathes().size()]);
-      System.out.println(pathes.length);
+      System.out.println(pathes.size());
       File[] files = null;
 
       for(String x : pathes) {
-        System.out.println("In ForEach " + x);
         files = new File(x).listFiles();
       }
 
@@ -33,19 +31,20 @@ public class LoadImages
         if(!AllowedFile) {
           System.out.println(allListFiles.get(i) + " remove");
           allListFiles.remove(i);
+          //when we use remove in ArrayList index get possition i-1;
+          i--;
         }
-        i--; //when we use remove in ArrayList index get possition i-1;
       }
 
       // Create image objects
       for(File x : allListFiles)
         listOfImages.add(new Image(x.getName(), x.getPath()));
-
-     System.out.println("Size listFiles " + allListFiles.size());
+     return listOfImages;
    }
 
 
   public static ArrayList<Image> getlistOfImages() {
     return listOfImages;
   }
+
 }
