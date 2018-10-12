@@ -6,10 +6,13 @@ import LoadImages.*;
 import Model.HammingDistance;
 import Model.HashBit;
 import Model.WorkOnTheImages;
+import View.Controller;
+import View.Dialogs;
 import View.DirChooser;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javafx.application.Platform;
 
 public class BaseClass
 {
@@ -39,8 +42,13 @@ public class BaseClass
     execCalcBitCode.shutdown();
     while (!execCalcBitCode.isTerminated());
     HammingDistance.HammDist(images);
-    for (Image x : images) {
-      System.out.println(x.isUnique());
-    }
+    DeleteFilesFromTMPDir.DeleteFilesFromTmp();
+    CopyImages.Copy(images);
+
+    Controller.setSelectFolderToSave(false);
+    Controller.setSelectFolderImages(false);
+
+    Platform.runLater(()-> Dialogs.Done());
+
   }
 }

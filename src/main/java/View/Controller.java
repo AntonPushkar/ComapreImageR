@@ -1,6 +1,5 @@
 package View;
 
-import LoadImages.LoadImages;
 import Main.BaseClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,23 +29,35 @@ public class Controller
   public void ButtonPathes(ActionEvent event)
   {
     DirChooser.ChooseDirOfImage();
+    if(DirChooser.getPathes()!=null)
+      SelectFolderImages=true;
+  }
+
+  @FXML
+  public void ButtonSaveTo(ActionEvent event)
+  {
+    DirChooser.ChooseDirForSaveImages();
+    if(DirChooser.getPathToSave()!=null)
+      SelectFolderToSave=true;
   }
 
   @FXML
   public void CompareButton(ActionEvent event)
   {
+    if(SelectFolderImages == false) {
+      Dialogs.AlertImage("Didn't select directory of images");
+      return;
+    }
+    if(SelectFolderToSave == false) {
+      Dialogs.AlertImage("Didn't select directory to save images ");
+      return;
+    }
     new Thread( () -> new BaseClass().CompareImage()).start();
   }
 
-  @FXML
-  public void ButtonSettings(ActionEvent event)
-  {
-    /*MainSettings mainSettings = new MainSettings();
-    mainSettings.SettingsWindow();*/
-  }
 
 
-  public static void setSelectFolder(boolean selectFolder) {
+  public static void setSelectFolderToSave(boolean selectFolder) {
     SelectFolderToSave = selectFolder;
   }
 

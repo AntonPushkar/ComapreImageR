@@ -8,7 +8,7 @@ public class Image
   private final String path;
   private String pathOfEditedImage;
   private String bitcode;
-  private boolean unique = false;
+  private boolean unique = true;
   private int Resolution;
 
 

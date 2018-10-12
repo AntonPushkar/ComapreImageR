@@ -12,20 +12,19 @@ import java.util.ArrayList;
 
 public class CopyImages
 {
-  public static void Copy()
+  public static void Copy(ArrayList<Image> images)
   {
     String FolderForCopy = DirChooser.getPathToSave();
     if(FolderForCopy == null)
       throw new NullPointerException("Folder for copy is null!");
-    ArrayList<Image> listOfImages = LoadImages.getlistOfImages();
-    if(listOfImages == null || listOfImages.isEmpty())
+    if(images == null || images.isEmpty())
       throw new NullPointerException("List Of Images for copy is null or empty!");
 
 
     Path ToCopy;
     Path originalPath;
 
-    for(Image x: listOfImages)
+    for(Image x: images)
     {
       ToCopy = Paths.get(FolderForCopy + "\\"+x.getName());
       originalPath = Paths.get(x.getPath());
